@@ -14,6 +14,7 @@
 		1E029E8B1F01894A00182770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E029E891F01894A00182770 /* LaunchScreen.storyboard */; };
 		1E029E961F01894A00182770 /* parse_chatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E029E951F01894A00182770 /* parse_chatTests.swift */; };
 		1E029EA11F01894A00182770 /* parse_chatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E029EA01F01894A00182770 /* parse_chatUITests.swift */; };
+		1E28E8CB1F018BCD009C7DED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28E8CA1F018BCD009C7DED /* LoginViewController.swift */; };
 		2D8A44D842BC4EE863777BDB /* Pods_parse_chatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143C0B958AFB752F5799D0C7 /* Pods_parse_chatTests.framework */; };
 		3C00197DA49263DC153F37D9 /* Pods_parse_chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5E2CC60D23FCE2B3991BC8 /* Pods_parse_chat.framework */; };
 		98A30F8E46A25592B9DBA963 /* Pods_parse_chatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A49F090A89EBD93AE1F7307 /* Pods_parse_chatUITests.framework */; };
@@ -53,6 +54,7 @@
 		1E029E9C1F01894A00182770 /* parse_chatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = parse_chatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E029EA01F01894A00182770 /* parse_chatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parse_chatUITests.swift; sourceTree = "<group>"; };
 		1E029EA21F01894A00182770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E28E8CA1F018BCD009C7DED /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3B5E2CC60D23FCE2B3991BC8 /* Pods_parse_chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_parse_chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		500AB6E02B21A004C96FC19D /* Pods-parse_chatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-parse_chatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-parse_chatTests/Pods-parse_chatTests.release.xcconfig"; sourceTree = "<group>"; };
 		5A49F090A89EBD93AE1F7307 /* Pods_parse_chatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_parse_chatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 				1E029E871F01894A00182770 /* Assets.xcassets */,
 				1E029E891F01894A00182770 /* LaunchScreen.storyboard */,
 				1E029E8C1F01894A00182770 /* Info.plist */,
+				1E28E8CA1F018BCD009C7DED /* LoginViewController.swift */,
 			);
 			path = parse_chat;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E28E8CB1F018BCD009C7DED /* LoginViewController.swift in Sources */,
 				1E029E831F01894A00182770 /* ViewController.swift in Sources */,
 				1E029E811F01894A00182770 /* AppDelegate.swift in Sources */,
 			);
@@ -698,6 +702,7 @@
 				1E029EA71F01894A00182770 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1E029EA81F01894A00182770 /* Build configuration list for PBXNativeTarget "parse_chatTests" */ = {
 			isa = XCConfigurationList;
@@ -706,6 +711,7 @@
 				1E029EAA1F01894A00182770 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1E029EAB1F01894A00182770 /* Build configuration list for PBXNativeTarget "parse_chatUITests" */ = {
 			isa = XCConfigurationList;
@@ -714,6 +720,7 @@
 				1E029EAD1F01894A00182770 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
