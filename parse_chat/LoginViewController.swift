@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
                 print("User successfully registered!")
             }
             
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
         
         let alertController = UIAlertController(title: "Password and Username Required", message: "Please fill in both fields.", preferredStyle: .alert)
@@ -56,6 +55,7 @@ class LoginViewController: UIViewController {
             } else {
                 print("User logged in successfully!")
             }
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
         
         let alertController = UIAlertController(title: "Password and Username Required", message: "Please fill in both fields.", preferredStyle: .alert)
