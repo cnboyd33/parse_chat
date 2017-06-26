@@ -15,7 +15,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var chatTableView: UITableView!
     
-    var messageArray: [PFObject]?
+    var messageArray: [PFObject]? = []
     
     var refreshTimer: Timer!
     
@@ -27,7 +27,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         chatMessage.saveInBackground { (success, error) in
             if success {
                 print("The message was saved!")
-                self.messageTextField.text = ""
+                self.messageTextField.text = nil
             } else if let error = error {
                 print("prpblem saving message : \(error.localizedDescription)")
             }
@@ -39,13 +39,14 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func refresh() {
         print("refresh")
         
-        var query = PFQuery(className: "Message_fbu2017")
+        let query = PFQuery(className: "Message_fbu2017")
+        query.addDescendingOrder("createdAt")
         query.findObjectsInBackground { (messages: [PFObject]?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
             self.messageArray = messages
-                print(messages?[0])
+                self.chatTableView.reloadData()
         }
         }
     }
@@ -53,8 +54,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.refresh), userInfo: nil, repeats: true)
+        
+        chatTableView.dataSource = self
+        chatTableView.delegate = self
 
         // Do any additional setup after loading the view.
+        
+        //auto size
+        chatTableView.rowHeight = UITableViewAutomaticDimension
+        chatTableView.estimatedRowHeight = 50
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,12 +71,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return messageArray!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = chatTableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
+        
+        let message = messageArray![indexPath.row]
+        cell.messageDisplay.text = message["text"] as! String
+        
         return cell
+        
+        
     }
     
 
