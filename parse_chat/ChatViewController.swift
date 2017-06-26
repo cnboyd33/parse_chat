@@ -15,8 +15,13 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var chatTableView: UITableView!
     
+    var messageArray: [PFObject]?
+    
+    var refreshTimer: Timer!
+    
     @IBAction func sendMessage(_ sender: Any) {
-        let chatMessage = PFObject(className: "Message_fbuJuly2017")
+        let chatMessage = PFObject(className: "Message_fbu2017")
+        
         chatMessage["text"] = messageTextField.text ?? ""
         
         chatMessage.saveInBackground { (success, error) in
@@ -30,8 +35,24 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    
+    func refresh() {
+        print("refresh")
+        
+        var query = PFQuery(className: "Message_fbu2017")
+        query.findObjectsInBackground { (messages: [PFObject]?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+            self.messageArray = messages
+                print(messages?[0])
+        }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.refresh), userInfo: nil, repeats: true)
 
         // Do any additional setup after loading the view.
     }
