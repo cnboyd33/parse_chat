@@ -24,6 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if PFUser.current() != nil {
             //if there is a logged in user the load the home view controller
+            if let currentUser = PFUser.current() {
+                print("hello")
+            }
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let chatViewController = storyboard.instantiateViewController(withIdentifier: "ChatViewController")
+            window?.rootViewController = chatViewController
             
         }
         // Override point for customization after application launch.

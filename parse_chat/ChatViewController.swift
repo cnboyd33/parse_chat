@@ -23,6 +23,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let chatMessage = PFObject(className: "Message_fbu2017")
         
         chatMessage["text"] = messageTextField.text ?? ""
+        chatMessage["user"] = PFUser.current()
         
         chatMessage.saveInBackground { (success, error) in
             if success {
@@ -37,17 +38,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func refresh() {
-        print("refresh")
         
         let query = PFQuery(className: "Message_fbu2017")
         query.addDescendingOrder("createdAt")
+        query.includeKey("user")
         query.findObjectsInBackground { (messages: [PFObject]?, error: Error?) in
             if let error = error {
                 print(error.localizedDescription)
             } else {
             self.messageArray = messages
                 self.chatTableView.reloadData()
-        }
+            }
         }
     }
     
@@ -62,7 +63,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //auto size
         chatTableView.rowHeight = UITableViewAutomaticDimension
-        chatTableView.estimatedRowHeight = 50
+        //chatTableView.estimatedRowHeight = 50
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,6 +80,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let message = messageArray![indexPath.row]
         cell.messageDisplay.text = message["text"] as! String
+        
+        if let user = message["user"] as? PFUser {
+            cell.usernameLabel.text = user.username
+        } else {
+            cell.usernameLabel.text = ":^)"
+        }
         
         return cell
         
