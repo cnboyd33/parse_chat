@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             configuration.applicationId = "parseChatID"
             configuration.server = "https://blooming-thicket-89345.herokuapp.com/parse"
         }))
+        
+        if PFUser.current() != nil {
+            //if there is a logged in user the load the home view controller
+            
+        }
         // Override point for customization after application launch.
         return true
     }
