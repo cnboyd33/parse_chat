@@ -63,7 +63,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //auto size
         chatTableView.rowHeight = UITableViewAutomaticDimension
-        //chatTableView.estimatedRowHeight = 50
+        chatTableView.estimatedRowHeight = 50
     }
 
     override func didReceiveMemoryWarning() {
